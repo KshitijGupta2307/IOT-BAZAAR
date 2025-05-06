@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Work - IoT Bazaar</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background-color: #6A0DAD;
+      color: #fff;
+      padding: 1.5rem 0;
+      text-align: center;
+    }
+    main {
+      padding: 2rem;
+    }
+    #projects {
+      text-align: center;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .project {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      text-align: left;
+    }
+    .project img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+    }
+    .view-button {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: #6A0DAD;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 1rem;
+      transition: background-color 0.3s;
+    }
+    .view-button:hover {
+      background-color: #4b088a;
+    }
+    marquee {
+      background-color: #f1e9f9;
+      padding: 10px;
+      font-weight: bold;
+      color: #6A0DAD;
+    }
+    footer {
+      background-color: #6A0DAD;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 20px;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    .close-button {
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #333;
+    }
+    .close-button:hover {
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Custom Projects</h1>
+  </header>
+  <main>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project-grid">
+        <div class="project">
+          <img src="1.png" alt="Smoke Detector" />
+          <h3>Smoke Detector</h3>
+          <p>Short description of smoke detection.</p>
+          <a href="#" class="view-button" data-title="Smoke Detector" data-description="This smoke detector project uses IoT to detect smoke levels and send alerts to prevent fire accidents.">View Project</a>
+        </div>
+        <div class="project">
+          <img src="1.png" alt="Alcohol Detection System" />
+          <h3>Alcohol Detection And Engine Locking System</h3>
+          <p>Short description of Alcohol Detection System.</p>
+          <a href="#" class="view-button" data-title="Alcohol Detection and Engine Locking System" data-description="This system checks the driver's breath for alcohol and automatically locks the engine if alcohol is detected.">View Project</a>
+        </div>
+        <div class="project">
+          <img src="1.png" alt="Mini Portrait Machine" />
+          <h3>Mini Portrait Machine</h3>
+          <p>An Arduino-based machine that draws miniature portraits using motors and pen mechanisms.</p>
+          <a href="#" class="view-button" data-title="Mini Portrait Machine" data-description="An Arduino-based drawing machine that creates miniature portraits using motors and pen mechanisms.">View Project</a>
+        </div>
+      </div>
+    </section>
+    <marquee behavior="scroll" direction="left">
+      📢 Note: If you're interested in ordering any of these projects or need a custom project, feel free to contact us via WhatsApp or email through the app.
+    </marquee>
+  </main>
+  <footer>
+    <p><b>IoT Bazaar</b></p>
+  </footer>
+  <div id="projectModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+    </div>
+  </div>
+  <script>
+    document.querySelectorAll('.view-button').forEach(button => {
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+        const title = this.getAttribute('data-title');
+        const description = this.getAttribute('data-description');
+        document.getElementById('modalTitle').textContent = title;
+        document.getElementById('modalDescription').textContent = description;
+        document.getElementById('projectModal').style.display = 'block';
+      });
+    });
+    document.querySelector('.close-button').addEventListener('click', function() {
+      document.getElementById('projectModal').style.display = 'none';
+    });
+    window.addEventListener('click', function(event) {
+      const modal = document.getElementById('projectModal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
